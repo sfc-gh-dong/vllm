@@ -1,0 +1,11 @@
+spec:
+  containers:
+    - name: streamlit-container
+      image: <image_repository_url>/streamlit
+      env:
+        OPENAI_API_BASE: http://llama:8000/v1
+        MODEL: meta-llama/Llama-2-7b-chat-hf
+  endpoints:
+    - name: chat
+      port: 8501
+      public: true

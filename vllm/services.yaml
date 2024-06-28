@@ -1,0 +1,28 @@
+spec:
+  containers:
+    - name: vllm-container
+      image: <image_repository_url>/vllm
+      resources:
+        requests:
+          nvidia.com/gpu: 1 # if running GPU 7 or 10, update accordingly
+        limits:
+          nvidia.com/gpu: 1 # if running GPU 7 or 10, update accordingly
+      env:
+        MODEL: meta-llama/Llama-2-7b-chat-hf
+        HF_TOKEN: <your_hf_token>
+        NUM_GPU: 1 # if running in GPU 7 or GPU 10, update accordingly
+        MAX_GPU_MEMORY: 24Gib # if running in GPU 7 or GPU 10, update accordingly
+      volumeMounts:
+        - name: models
+          mountPath: /models
+
+  endpoints:
+    - name: llama
+      port: 8000
+      public: true
+  volumes:
+    - name: models
+      source: "@LLM.PUBLIC.models"
+
+  networkPolicyConfig:
+    allowInternetEgress: true
