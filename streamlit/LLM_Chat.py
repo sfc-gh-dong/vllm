@@ -1,8 +1,8 @@
 import streamlit as st
 import os
-st.title("Chat with LLama")
-
 from openai import OpenAI
+
+st.title("Chat with LLama")
 
 # Modify OpenAI's API key and API base to use vLLM's API server.
 openai_api_key = "EMPTY"
