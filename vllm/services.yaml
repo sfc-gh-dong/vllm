@@ -4,14 +4,14 @@ spec:
       image: <image_repository_url>/vllm
       resources:
         requests:
-          nvidia.com/gpu: 1 # if running GPU 7 or 10, update accordingly
+          nvidia.com/gpu: 1
         limits:
-          nvidia.com/gpu: 1 # if running GPU 7 or 10, update accordingly
+          nvidia.com/gpu: 1
       env:
         MODEL: meta-llama/Llama-2-7b-chat-hf
         HF_TOKEN: <your_hf_token>
-        NUM_GPU: 1 # if running in GPU 7 or GPU 10, update accordingly
-        MAX_GPU_MEMORY: 24Gib # if running in GPU 7 or GPU 10, update accordingly
+        NUM_GPU: 1
+        MAX_GPU_MEMORY: 24Gib
       volumeMounts:
         - name: models
           mountPath: /models
